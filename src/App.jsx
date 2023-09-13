@@ -4,6 +4,7 @@ import Footer from './components/footer/footer';
 import Header from './components/header/Header';
 import './app.scss';
 import SignIn from './view/sign-in/Sign-in';
+import User from './view/user/User';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage/>}/>
         <Route path='/sign-in' element={<SignIn/>}/>
+        <Route path='/user' element={<User/>}/>
       </Routes>
       <Footer/> 
     </BrowserRouter>

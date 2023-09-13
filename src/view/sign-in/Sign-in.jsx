@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../../assets/fontAwesome/fontawesome-free-6.4.2-web/css/all.min.css';
+import '../../assets/fontAwesome/fontawesome-free-6.4.2-web/css/fontawesome.min.css';
 import './sign-in.scss';
 
 function SignIn (){
@@ -24,7 +24,7 @@ function SignIn (){
                         </label>
                     </div>
             {/*PLACEHOLDER DUE TO STATIC SITE*/}
-                    <Link href="/user.html" className="sign-in-button">Sign In</Link>
+                    <Link to="/user" className="sign-in-button">Sign In</Link>
             {/* SHOULD BE THE BUTTON BELOW */}
             {/* <button className="sign-in-button">Sign In</button> */}
                 </form>
