@@ -1,8 +1,9 @@
 import '../../assets/fontAwesome/fontawesome-free-6.4.2-web/css/fontawesome.min.css';
 import './sign-in.scss';
 import { useState } from 'react';
-//import { useDispatch } from 'react-redux';
-
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
+import { authSuccess, authRejected} from '../../redux/Slices/authSlice';
 
 function SignIn (){
     const initialState = {
@@ -10,10 +11,23 @@ function SignIn (){
         password: ''
     }
     const [data, setData] = useState(initialState);
-    //const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const handleSubmit = e => {
         e.preventDefault();
-       // dispatch(addUserAction(data))
+        console.log(data)
+        axios({
+            method: 'post',
+            url: 'http://localhost:3001/api/v1/user/login',
+            data: data
+        })
+            .then( res => {
+                dispatch(authSuccess(res.data.body.token));
+                localStorage.setItem("token", res.data.body.token);
+              })
+            .catch( (err) => {
+                console.log(err)
+              dispatch(authRejected(err));
+            });
     }
     return (
         <main className="main bg-dark">
