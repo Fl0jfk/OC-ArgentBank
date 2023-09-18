@@ -1,18 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  firstName: "",
+  lastName: "",
+  userName: "", 
+  email: ""
+}
+
 const userSlice = createSlice({
   name: "profile",
-  initialState: { firstName: "", lastName: "" },
+  initialState,
   reducers: {
+    setUserName: (state, action) => {
+      state.userName = action.payload;
+    },
     setProfile: (state, action) => {
       state.firstName = action.payload.firstName;
       state.lastName = action.payload.lastName;
-    },
-    setProfileFailure: (state, action) => {
-      state.error = action.payload;
+      state.userName = action.payload.userName;
+      state.email = action.payload.email;
     },
   },
 });
 
 export default userSlice.reducer;
-export const { setProfile, setProfileFailure } = userSlice.actions;
+export const { setUserName, setProfile } = userSlice.actions;

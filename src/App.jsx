@@ -5,6 +5,7 @@ import Header from './components/header/Header';
 import './app.scss';
 import SignIn from './view/sign-in/Sign-in';
 import User from './view/user/User';
+import ErrorPage from './view/errorPage/ErrorPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/' element={<HomePage/>}/>
         <Route path='/sign-in' element={<SignIn/>}/>
         <Route path='/user' element={<User/>}/>
+        <Route path='*' element={<ErrorPage/>}/>
       </Routes>
       <Footer/> 
     </BrowserRouter>
