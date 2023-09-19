@@ -4,6 +4,7 @@
 
 .sign-in-button {
     display: block;
+    cursor: pointer;
     width: 100%;
     padding: 8px;
     font-size: 1.1rem;
@@ -12,6 +13,18 @@
     border-color: #00bc77;
     background-color: #00bc77;
     color: #fff;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-top-style: outset;
+    border-right-style: outset;
+    border-bottom-style: outset;
+    border-left-style: outset;
+    align-items: flex-start;
+    text-align: center;
+    box-sizing: border-box;
+    appearance: auto;
 }
   
 .sign-in-content {
@@ -59,8 +72,4 @@
 
 .none {
     display: none;
-}
-
-.flex {
-    display: flex;
 }

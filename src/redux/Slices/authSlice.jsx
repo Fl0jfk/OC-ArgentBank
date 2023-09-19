@@ -17,14 +17,14 @@ const authSlice = createSlice({
         state.isAuth = false;
         state.token = null;
     },
-    authOutSuccess: state => {
+    authOut: state => {
         state.isAuth = false;
         state.token = null;
-
+        localStorage.removeItem("token");
     },
   },
 });
 
-export const { authSuccess, authRejected, authOutSuccess } = authSlice.actions;
+export const { authSuccess, authRejected, authOut } = authSlice.actions;
 
 export default authSlice.reducer;
