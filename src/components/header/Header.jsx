@@ -23,12 +23,12 @@ function Header() {
                 </Link>
                 <div>
                     {  connectedOrNot ? 
-                        <Link to="/sign-in" className="link_SignOut" onClick={handleLogOut}>
+                        <Link to="/sign" className="link_SignOut" onClick={handleLogOut}>
                         <i className="fa-solid fa-right-from-bracket"></i>
                             Sign Out
                         </Link>
                         :
-                        <Link className="main-nav-item" to="/sign-in">
+                        <Link className="main-nav-item" to="/sign">
                             <i className="fa fa-user-circle"></i>
                             Sign In
                         </Link>
