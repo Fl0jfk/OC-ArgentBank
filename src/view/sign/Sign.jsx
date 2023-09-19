@@ -7,19 +7,19 @@ import { authSuccess } from '../../redux/Slices/authSlice';
 import { useNavigate } from "react-router-dom";
 
 function Sign (){
-    const initialState = {
+    const signInState = {
         email: '',
         password: ''
     }
-    const initialState2 = {
+    const signUpState = {
         email: '',
         password: '',
         firstName: '',
         lastName: '',
         userName: ''
     }
-    const [dataSignIn, setDataSignIn] = useState(initialState);
-    const [dataSignUp, setDataSignUp] = useState(initialState2);
+    const [dataSignIn, setDataSignIn] = useState(signInState);
+    const [dataSignUp, setDataSignUp] = useState(signUpState);
     const [rememberMe, setRememberMe] = useState(false);
     const [isError, setIsError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
@@ -46,11 +46,11 @@ function Sign (){
                     localStorage.setItem("token", res.data.body.token);
                   }  
                 navigate(`/user`);  
-                setDataSignIn(initialState);
+                setDataSignIn(signInState);
               })
             .catch((err) => {
               setIsError(true);
-              setDataSignIn(initialState);
+              setDataSignIn(signInState);
               setErrorMessage(err.message);
             });
     }
@@ -64,13 +64,13 @@ function Sign (){
             .then( res => {
                 console.log(res)
                 handleSubmitSignIn(e);
-                setDataSignIn(initialState);
-                setDataSignUp(initialState2);
+                setDataSignIn(signInState);
+                setDataSignUp(signUpState);
               })
             .catch((err) => {
               setIsError(true);
-              setDataSignUp(initialState2);
-              setDataSignIn(initialState);
+              setDataSignIn(signInState);
+              setDataSignUp(signUpState);
               setErrorMessage(err.message);
             });
     }
