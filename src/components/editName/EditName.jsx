@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserName, setProfile } from "../../redux/Slices/userSlice";
+import { setUserName, setProfile } from '../../redux/slices/userSlice';
 import "./editName.scss";
 import Button from "../button/Button";
 import axios from "axios";
@@ -12,16 +12,13 @@ function EditName() {
   const [editUserName, setEditUserName] = useState(userName);
   const userProfile = useSelector((state) => state.user);
   const [isEditMode, setEditMode] = useState(false);
-  useEffect((userName) => {
+  useEffect(() => {
     if (token != '') {
       axios("http://localhost:3001/api/v1/user/profile", {
-        method: "PUT",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
-        },
-        body: {
-          userName: userName,
         },
       })
         .then((res) => {
@@ -29,7 +26,7 @@ function EditName() {
         })
         .catch(() => {
         });
-    }
+    } 
   }, [token, dispatch]);
   const handleEditClick = () => {
     setEditMode(true);
@@ -37,20 +34,23 @@ function EditName() {
   const handleCancelClick = () => {
     setEditMode(false);
   };
-  const handleSaveClick = () => {
+  console.log(editUserName)
+  const handleSaveClick = e => {
+    e.preventDefault();
     axios(`http://localhost:3001/api/v1/user/profile`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: {
-        userName: editUserName,
-      },
+      body: JSON.stringify({
+        userName: `${editUserName}`
+      }),
     })
       .then((res) => {
+        console.log(res.data.body)
         dispatch(setUserName(res.data.body.userName));
-        setEditUserName('')
+        setEditUserName(res.data.body.userName);
       })
       .catch(() => {
       });

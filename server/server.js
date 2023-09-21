@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const express = require('express')
 const dotEnv = require('dotenv')
 const cors = require('cors')
@@ -30,7 +29,6 @@ if (process.env.NODE_ENV !== 'production') {
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 }
 
-// eslint-disable-next-line no-unused-vars
 app.get('/', (req, res, next) => {
   res.send('Hello from my Express server v2!')
 })
