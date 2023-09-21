@@ -23,7 +23,8 @@ function EditName() {
         .then((res) => {
           dispatch(setProfile(res.data.body));
         })
-        .catch(() => {
+        .catch((err) => {
+          console.log(err)
         });
     } 
   }, [token, dispatch]);

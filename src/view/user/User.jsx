@@ -1,10 +1,10 @@
 import './user.scss';
-import Button from '../../components/button/Button';
 import EditName from '../../components/editName/EditName';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
-
+import transactions from '../../data/transactions.json';
+import Account from '../../components/account/Account';
 
 function User(){
     const navigate = useNavigate();
@@ -20,36 +20,9 @@ function User(){
                     <EditName/>
                 </div>
                 <h2 className="sr-only">Accounts</h2>
-                <section className="account">
-                    <div className="account-content-wrapper">
-                        <h3 className="account-title">Argent Bank Checking (x8349)</h3>
-                        <p className="account-amount">$2,082.79</p>
-                        <p className="account-amount-description">Available Balance</p>
-                    </div>
-                    <div className="account-content-wrapper cta">
-                       <Button className="transaction-button" text="View transactions"/>
-                    </div>
-                </section>
-                <section className="account">
-                    <div className="account-content-wrapper">
-                        <h3 className="account-title">Argent Bank Savings (x6712)</h3>
-                        <p className="account-amount">$10,928.42</p>
-                        <p className="account-amount-description">Available Balance</p>
-                    </div>
-                    <div className="account-content-wrapper cta">
-                        <Button className="transaction-button" text="View transactions"/>
-                    </div>
-                </section>
-                <section className="account">
-                    <div className="account-content-wrapper">
-                        <h3 className="account-title">Argent Bank Credit Card (x8349)</h3>
-                        <p className="account-amount">$184.30</p>
-                        <p className="account-amount-description">Current Balance</p>
-                    </div>
-                    <div className="account-content-wrapper cta">
-                        <Button className="transaction-button" text="View transactions"/>
-                    </div>
-                </section>
+                { (transactions) ? transactions.transaction.map((transaction) => (
+                    <Account key={transaction.id} title={transaction.title} amount={transaction.amount} description={transaction.description}/>
+                )) : ""}
             </main>
         )
     
