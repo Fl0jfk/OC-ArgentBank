@@ -8,8 +8,7 @@ import axios from "axios";
 function EditName() {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
-  const userName = useSelector((state) => state.user.userName);
-  const [editUserName, setEditUserName] = useState(userName);
+  const [editUserName, setEditUserName] = useState(useSelector((state) => state.user.userName));
   const userProfile = useSelector((state) => state.user);
   const [isEditMode, setEditMode] = useState(false);
   useEffect(() => {
@@ -35,14 +34,12 @@ function EditName() {
     setEditMode(false);
   };
   const handleSaveClick = () => {
-    console.log(token)
     axios(`http://localhost:3001/api/v1/user/profile`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      
       data: JSON.stringify({
         userName: editUserName
       }),
