@@ -13,7 +13,7 @@ function EditName() {
   const userProfile = useSelector((state) => state.user);
   const [isEditMode, setEditMode] = useState(false);
   useEffect(() => {
-    if (token != '') {
+    if (token) {
       axios("http://localhost:3001/api/v1/user/profile", {
         method: "POST",
         headers: {
@@ -34,25 +34,25 @@ function EditName() {
   const handleCancelClick = () => {
     setEditMode(false);
   };
-  console.log(editUserName)
-  const handleSaveClick = e => {
-    e.preventDefault();
+  const handleSaveClick = () => {
+    console.log(token)
     axios(`http://localhost:3001/api/v1/user/profile`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({
-        userName: `${editUserName}`
+      
+      data: JSON.stringify({
+        userName: editUserName
       }),
     })
       .then((res) => {
-        console.log(res.data.body)
         dispatch(setUserName(res.data.body.userName));
         setEditUserName(res.data.body.userName);
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err)
       });
     setEditMode(false);
   };
@@ -64,23 +64,23 @@ function EditName() {
           {isEditMode ? (
             <form className="input_editName">
               <input
-                type="text" 
-                min={5}
+                style={{width: "200px"}}
+                type="text"
                 required
-                value={editUserName}
+                placeholder={`Your last username: ${editUserName}`}
                 onChange={(e) => setEditUserName(e.target.value)}
               />
-               <Button text="Save" className="edit-button" onClick={handleSaveClick} />
+               <Button text="Save" className="edit-button" onClick={handleSaveClick}/>
             </form>
           ) : (
             userProfile && `${userProfile.firstName} ${userProfile.lastName} !`
           )}
         </h1>
         {isEditMode ? (
-            <Button text="Cancel" className="edit-button" onClick={handleCancelClick} />
+            <Button text="Cancel" className="edit-button" onClick={handleCancelClick}/>
         ) : (
           <div className="button_editName">
-            <Button text="Edit Name" className="edit-button" onClick={handleEditClick} />
+            <Button text="Edit Name" className="edit-button" onClick={handleEditClick}/>
           </div>
         )}
       </div>

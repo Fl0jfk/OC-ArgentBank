@@ -14,7 +14,6 @@ function Header() {
     };
     const location = useLocation();
     const test = location => {
-        console.log(location.pathname)
         if( location.pathname === "/user" ){
            return <></>
         } else {

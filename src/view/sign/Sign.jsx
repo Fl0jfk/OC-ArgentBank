@@ -7,17 +7,8 @@ import { authSuccess } from '../../redux/slices/authSlice';
 import { useNavigate } from "react-router-dom";
 
 function Sign (){
-    const signInState = {
-        email: '',
-        password: ''
-    }
-    const signUpState = {
-        email: '',
-        password: '',
-        firstName: '',
-        lastName: '',
-        userName: ''
-    }
+    const signInState = { email: '', password: ''};
+    const signUpState = { email: '', password: '', firstName: '', lastName: '', userName: ''};
     const [dataSignIn, setDataSignIn] = useState(signInState);
     const [dataSignUp, setDataSignUp] = useState(useSelector(state => state.user));
     const [rememberMe, setRememberMe] = useState(false);
@@ -62,8 +53,7 @@ function Sign (){
             url: 'http://localhost:3001/api/v1/user/signup',
             data: dataSignUp
         })
-            .then( res => {
-                console.log(res)
+            .then( () => {
                 handleSubmitSignIn(e);
                 setDataSignIn(signInState);
                 setDataSignUp(signUpState);
@@ -82,17 +72,17 @@ function Sign (){
         setIsError(false);
         setErrorMessage("");
         if (info === 'email'){
-            setDataSignIn({...dataSignIn, email: e.target.value})
-            setDataSignUp({...dataSignUp, email: e.target.value})
+            setDataSignIn({...dataSignIn, email: e.target.value});
+            setDataSignUp({...dataSignUp, email: e.target.value});
         } else if (info === 'password'){
-            setDataSignIn({...dataSignIn, password: e.target.value})
-            setDataSignUp({...dataSignUp, password: e.target.value})
+            setDataSignIn({...dataSignIn, password: e.target.value});
+            setDataSignUp({...dataSignUp, password: e.target.value});
         } else if (info === 'userName'){
-            setDataSignUp({...dataSignUp, userName: e.target.value})
+            setDataSignUp({...dataSignUp, userName: e.target.value});
         } else if (info === 'firstName'){
-            setDataSignUp({...dataSignUp, firstName: e.target.value})
+            setDataSignUp({...dataSignUp, firstName: e.target.value});
         } else {
-            setDataSignUp({...dataSignUp, lastName: e.target.value})
+            setDataSignUp({...dataSignUp, lastName: e.target.value});
         }
         
     }
