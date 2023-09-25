@@ -1,0 +1,23 @@
+.alert-msg {
+    border-color: #c53f3f;
+    background-color: #c53f3f;
+    display: block;
+    width: 100%;
+    padding: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    color: #fff;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-top-style: outset;
+    border-right-style: outset;
+    border-bottom-style: outset;
+    border-left-style: outset;
+    align-items: flex-start;
+    text-align: center;
+    box-sizing: border-box;
+    appearance: auto;
+  }
