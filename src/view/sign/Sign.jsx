@@ -1,6 +1,6 @@
 import '../../assets/fontAwesome/fontawesome-free-6.4.2-web/css/fontawesome.min.css';
 import './sign.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { authSuccess } from '../../redux/slices/authSlice';
@@ -82,6 +82,13 @@ function Sign (){
             setDataSignUp({...dataSignUp, lastName: e.target.value});
         } 
     }
+    const navigateToUser = useNavigate();
+    const token = useSelector((state) => state.auth.isAuth);
+    useEffect(() => {
+        if(token){
+            navigateToUser('/user')
+        }
+    })
     return (
         <main className="main bg-dark">
             <section className="sign-in-content">
