@@ -83,14 +83,14 @@ function Sign (){
             setDataSignUp({...dataSignUp, firstName: e.target.value});
         } else {
             setDataSignUp({...dataSignUp, lastName: e.target.value});
-        }
-        
+        } 
     }
     return (
         <main className="main bg-dark">
             <section className="sign-in-content">
                 <i className="fa fa-user-circle sign-in-icon"></i>
-                <h1>Sign In</h1>
+                <h1 className={formSignIn}>Sign In</h1>
+                <h1 className={formSignUp}>Sign Up</h1>
                 <form onSubmit={handleSubmitSignIn} className={formSignIn}>
                     <div className="input-wrapper">
                         <label htmlFor="email">Email</label>

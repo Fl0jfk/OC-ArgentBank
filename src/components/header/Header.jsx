@@ -13,11 +13,11 @@ function Header() {
         dispatch(authOut());
     };
     const location = useLocation();
-    const test = location => {
+    const userSpace = location => {
         if( location.pathname === "/user" ){
-           return <></>
+            return
         } else {
-           return <Link to="/user">User Space</Link>
+           return <Link to="/user"><i className="fa fa-user-circle"></i>User Space</Link>
         }
     } 
     return (
@@ -30,10 +30,10 @@ function Header() {
                     />
                     <h1 className="sr-only">Argent Bank</h1>
                 </Link>
-                <div>
+                <div className='menuLinks'>
                     {  connectedOrNot ? 
                         <>
-                            {test(location)}
+                            {userSpace(location)}
                             <Link to="/sign" className="link_SignOut" onClick={handleLogOut}>
                                 <i className="fa-solid fa-right-from-bracket"></i>
                                 Sign Out

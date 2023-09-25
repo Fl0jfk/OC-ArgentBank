@@ -1,6 +1,6 @@
 import './user.scss';
 import EditName from '../../components/editName/EditName';
-import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
 import transactions from '../../data/transactions.json';
