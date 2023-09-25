@@ -10,6 +10,7 @@ function EditName() {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
   const [editUserName, setEditUserName] = useState(useSelector((state) => state.user.userName));
+  const placeHolderUser = useSelector((state) => state.user.userName)
   const userProfile = useSelector((state) => state.user);
   const [isEditMode, setEditMode] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -67,7 +68,7 @@ function EditName() {
                 style={{width: "200px"}}
                 type="text"
                 required
-                placeholder={`Your last username: ${editUserName}`}
+                placeholder={`Your last username: ${placeHolderUser}`}
                 onChange={(e) => setEditUserName(e.target.value)}
               />
                <Button text="Save" className="edit-button" onClick={handleSaveClick}/>
