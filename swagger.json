@@ -7,9 +7,9 @@
         "termsOfService": "http://swagger.io/terms/"
     },
     "host": "localhost:3001",
-    "basePath": "/api/v1",
+    "basebody": "/api/v1",
     "schemes": "- http",
-    "paths": {
+    "bodys": {
         "/user/login": {
             "post": {
                 "tags": "- User Module",
@@ -130,7 +130,7 @@
             }
         },
         "/user/accounts": {
-            "get": {
+            "post": {
                 "security": {
                     "- Bearer": []
                 },
@@ -176,7 +176,7 @@
             }
         },
         "/user/accounts/{accountId}": {
-            "get": {
+            "post": {
                 "security": {
                     "- Bearer": []
                 },
@@ -184,8 +184,8 @@
                 "summary": "User accounts API",
                 "description": "API for fetching an user's specified account data",
                 "parameters": {
-                    "path": {
-                        "- in": "path",
+                    "body": {
+                        "- in": "body",
                         "name": "accountId",
                         "description": "ID of the selected account",
                         "required": true,
@@ -228,7 +228,7 @@
             }
         }, 
         "/user/accounts/{accountId}/transactions": {
-            "get": {
+            "post": {
                 "security": {
                     "Bearer": []
                 },
@@ -237,7 +237,7 @@
                 "description": "API for fetching all transactions (current year) or the ones of the specified month from a user's specified account",
                 "parameters": [
                   {
-                    "in": "path",
+                    "in": "body",
                     "name": "accountId",
                     "description": "ID of the selected account",
                     "required": true,
@@ -290,7 +290,7 @@
             }
         },       
         "/user/accounts/{accountId}/transactions/{transactionId}": {
-            "get": {
+            "post": {
               "security": {
                   "Bearer": []
                 },
@@ -299,14 +299,14 @@
               "description": "API for fetching a specified transaction from a user's specified account",
               "parameters": [
                 {
-                  "in": "path",
+                  "in": "body",
                   "name": "accountId",
                   "description": "ID of the selected account",
                   "required": true,
                   "type": "string"
                 },
                 {
-                  "in": "path",
+                  "in": "body",
                   "name": "transactionId",
                   "description": "ID of the selected transaction",
                   "required": true,
@@ -356,14 +356,14 @@
               "description": "API for updating the category and notes of the specified transaction",
               "parameters": [
                 {
-                  "in": "path",
+                  "in": "body",
                   "name": "accountId",
                   "description": "ID of the selected account",
                   "required": true,
                   "type": "string"
                 },
                 {
-                  "in": "path",
+                  "in": "body",
                   "name": "transactionId",
                   "description": "ID of the selected transaction",
                   "required": true,

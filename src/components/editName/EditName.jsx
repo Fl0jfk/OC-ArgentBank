@@ -68,6 +68,7 @@ function EditName() {
                 style={{width: "200px"}}
                 type="text"
                 required
+                minLength={5}
                 placeholder={`Your last username: ${placeHolderUser}`}
                 onChange={(e) => setEditUserName(e.target.value)}
               />

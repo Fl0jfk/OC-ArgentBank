@@ -33,9 +33,9 @@ function Sign (){
         })
             .then( res => {
                 dispatch(authSuccess(res.data.body.token));
-                localStorage.setItem("token", res.data.body.token);
+                sessionStorage.setItem("token", res.data.body.token);
                 if (rememberMe) {
-                    sessionStorage.setItem("token", res.data.body.token);
+                    localStorage.setItem("token", res.data.body.token);
                   }  
                 navigate(`/user`);  
                 setDataSignIn(signInState);
@@ -52,7 +52,7 @@ function Sign (){
             url: 'http://localhost:3001/api/v1/user/signup',
             data: dataSignUp
         })
-            .then( () => {
+            .then(() => {
                 handleSubmitSignIn(e);
                 setDataSignIn(signInState);
                 setDataSignUp(signUpState);
@@ -98,11 +98,11 @@ function Sign (){
                 <form onSubmit={handleSubmitSignIn} className={formSignIn}>
                     <div className="input-wrapper">
                         <label htmlFor="email">Email</label>
-                        <input type="text" id="email"value={dataSignIn.email} onChange={e => handleInfoChange(e, 'email') } required/>
+                        <input type="text" id="email"value={dataSignIn.email} onChange={e => handleInfoChange(e, 'email') } minLength={5} required/>
                     </div>
                     <div className="input-wrapper">
                         <label htmlFor="password">Password</label>
-                        <input type="password" id="password"value={dataSignIn.password} onChange={e => handleInfoChange(e, 'password')} required/>
+                        <input type="password" id="password"value={dataSignIn.password} onChange={e => handleInfoChange(e, 'password')} minLength={10} required/>
                     </div>
                     <div className="input-wrapper">
                         <input type="checkbox" id="remember-me" checked={rememberMe} onChange={handleRememberMeChange}/>
@@ -117,23 +117,23 @@ function Sign (){
                 <form onSubmit={handleSubmitSignUp} className={formSignUp}>
                 <div className="input-wrapper">
                         <label htmlFor="email">Email</label>
-                        <input type="email" id="email"value={dataSignUp.email} onChange={e => handleInfoChange(e, 'email')} required/>
+                        <input type="email" id="email"value={dataSignUp.email} onChange={e => handleInfoChange(e, 'email')} minLength={5} required/>
                     </div>
                     <div className="input-wrapper">
                         <label htmlFor="username">Username</label>
-                        <input type="text" id="username"value={dataSignUp.userName} onChange={e => handleInfoChange(e, 'userName') } required/>
+                        <input type="text" id="username"value={dataSignUp.userName} onChange={e => handleInfoChange(e, 'userName') } minLength={5} required/>
                     </div>
                     <div className="input-wrapper">
                         <label htmlFor="password">Password</label>
-                        <input type="password" id="password"value={dataSignUp.password} onChange={e => handleInfoChange(e, 'password')} required/>
+                        <input type="password" id="password"value={dataSignUp.password} onChange={e => handleInfoChange(e, 'password')} minLength={10} required/>
                     </div>
                     <div className="input-wrapper">
                         <label htmlFor="firstname">FirstName</label>
-                        <input type="text" id="firstname"value={dataSignUp.firstName} onChange={e => handleInfoChange(e, 'firstName')} required/>
+                        <input type="text" id="firstname"value={dataSignUp.firstName} onChange={e => handleInfoChange(e, 'firstName')} minLength={5} required/>
                     </div>
                     <div className="input-wrapper">
                         <label htmlFor="lastname">LastName</label>
-                        <input type="text" id="lastname"value={dataSignUp.lastName} onChange={e => handleInfoChange(e, 'lastName')} required/>
+                        <input type="text" id="lastname"value={dataSignUp.lastName} onChange={e => handleInfoChange(e, 'lastName')} minLength={5} required/>
                     </div>
                     <div className="input-wrapper">
                         <input type="checkbox" id="remember-me" checked={rememberMe} onChange={handleRememberMeChange}/>
