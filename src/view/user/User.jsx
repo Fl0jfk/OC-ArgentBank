@@ -8,7 +8,7 @@ import Account from '../../components/account/Account';
 
 function User(){
     const navigate = useNavigate();
-    const token = useSelector((state) => state.auth.isAuth);
+    const token = useSelector((state) => state.auth.token);
     useEffect(() => {
         if(!token){
             navigate('/*')

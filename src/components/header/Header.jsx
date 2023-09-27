@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom';
 
 function Header() {
     const dispatch = useDispatch();        
-    const connectedOrNot = useSelector((state) => state.auth.isAuth);
+    const connectedOrNot = useSelector((state) => state.auth.token);
     const handleLogOut = () => {
         dispatch(authOut());
     };

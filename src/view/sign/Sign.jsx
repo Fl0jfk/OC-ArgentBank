@@ -3,21 +3,19 @@ import './sign.scss';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { authSuccess } from '../../redux/slices/authSlice';
+import { authSuccess, authRejected } from '../../redux/slices/authSlice';
 import { useNavigate } from "react-router-dom";
 import Alert from '../../components/alert/Alert';
 
 function Sign (){
     const signInState = { email: '', password: ''};
     const signUpState = { email: '', password: '', firstName: '', lastName: '', userName: ''};
-    const [dataSignIn, setDataSignIn] = useState(signInState);
+    const [dataSignIn, setDataSignIn] = useState(useSelector(state=>state.user));
     const [dataSignUp, setDataSignUp] = useState(useSelector(state => state.user));
     const [rememberMe, setRememberMe] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [inputSignUp, setInputSignUp] = useState(false);
-    const clickSignUp = () => {
-        setInputSignUp(!inputSignUp);
-    }
+    const clickSignUp = () => {setInputSignUp(!inputSignUp);};
     const formSignIn = (!inputSignUp ? "" : "none");
     const formSignUp = (inputSignUp ? "" : "none");
     const buttonSignUpAppear = (inputSignUp ? "sign-in-button" : "none");
@@ -42,6 +40,7 @@ function Sign (){
               })
             .catch((err) => {
               setDataSignIn(signInState);
+              dispatch(authRejected());
               setErrorMessage(err.response.data.message);
             });
     }
@@ -60,6 +59,7 @@ function Sign (){
             .catch((err) => {
               setDataSignIn(signInState);
               setDataSignUp(signUpState);
+              dispatch(authRejected());
               setErrorMessage(err.response.data.message);
             });
     }

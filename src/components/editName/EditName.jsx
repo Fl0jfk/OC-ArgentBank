@@ -15,7 +15,6 @@ function EditName() {
   const [isEditMode, setEditMode] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   useEffect(() => {
-    if (token) {
       axios("http://localhost:3001/api/v1/user/profile", {
         method: "POST",
         headers: {
@@ -29,7 +28,6 @@ function EditName() {
         .catch((err) => {
           setErrorMessage(err.response.data.message);
         });
-    } 
   }, [token, dispatch]);
   const handleEditClick = () => {
     setEditMode(true);
@@ -60,8 +58,7 @@ function EditName() {
   return (
     <div className="editName">
       <div className="user_welcome">
-        <h1>
-          Welcome back <br />
+        <h1>Welcome back <br />
           {isEditMode ? (
             <form className="input_editName">
               <input
