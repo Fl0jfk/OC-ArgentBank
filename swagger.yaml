@@ -365,9 +365,7 @@ definitions:
             type: string
           lastName:
             type: string
-          createdAt:
-            type: string
-          updatedAt:
+          username: 
             type: string
   LoginResponse:
     type: object
@@ -377,9 +375,7 @@ definitions:
   UserProfile:
     type: object
     properties:
-      firstName:
-        type: string
-      lastName:
+      userName:
         type: string
   AccountModel:
     type: object

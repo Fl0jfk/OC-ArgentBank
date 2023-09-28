@@ -10,8 +10,8 @@ import Alert from '../../components/alert/Alert';
 function Sign (){
     const signInState = { email: '', password: ''};
     const signUpState = { email: '', password: '', firstName: '', lastName: '', userName: ''};
-    const [dataSignIn, setDataSignIn] = useState(useSelector(state=>state.user));
-    const [dataSignUp, setDataSignUp] = useState(useSelector(state => state.user));
+    const [dataSignIn, setDataSignIn] = useState(signInState);
+    const [dataSignUp, setDataSignUp] = useState(signUpState);
     const [rememberMe, setRememberMe] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [inputSignUp, setInputSignUp] = useState(false);
@@ -83,7 +83,7 @@ function Sign (){
         } 
     }
     const navigateToUser = useNavigate();
-    const token = useSelector((state) => state.auth.isAuth);
+    const token = useSelector((state) => state.auth.token);
     useEffect(() => {
         if(token){
             navigateToUser('/user')
